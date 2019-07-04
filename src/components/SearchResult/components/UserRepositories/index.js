@@ -26,6 +26,9 @@ const UserRepositories = props => (
   </div>
 );
 
-UserRepositories.propTypes = {};
+UserRepositories.propTypes = {
+  repoName: PropTypes.string.isRequired,
+  starNumber: PropTypes.number.isRequired,
+};
 
 export default UserRepositories;

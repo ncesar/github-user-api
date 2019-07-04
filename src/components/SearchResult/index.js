@@ -26,12 +26,28 @@ class SearchResult extends Component {
       githubRepo: [],
       loaded: false,
       error: false,
+      pageNum: 5
     };
   }
 
   componentDidMount() {
     this.loadItems(this.props.location.state.userName);
+    this.scrollListener = window.addEventListener('scroll', (e) => {//escuta o scroll
+      this.handleScroll(e);
+    });
   }
+
+  handleScroll = (e) => {
+    const pageOffset = window.pageYOffset + window.innerHeight;
+    var bottomOffSet = 20;
+    if(pageOffset > 1000 - bottomOffSet) this.loadMore();
+  }
+
+  loadMore = () => {
+    this.setState((prevState) => ({
+      pageNum: prevState.pageNum + 5
+    }));
+  };
 
   componentWillReceiveProps(nextProps) {
     if (
@@ -45,7 +61,7 @@ class SearchResult extends Component {
     axios
       .get(`${api.baseUrl}/users/${userName}`)
       .then((res) => {
-        console.log('res', res);
+        console.log("res", res);
         this.setState({ githubData: res.data, loaded: true, error: false });
       })
       .catch((err) => {
@@ -57,9 +73,9 @@ class SearchResult extends Component {
     axios
       .get(`${api.baseUrl}/users/${userName}/orgs`)
       .then((org) => {
-        console.log('org', org);
+        console.log("org", org);
         if (org.data.length <= 0) {
-          this.setState({ githubOrg: '' });
+          this.setState({ githubOrg: "" });
         } else {
           this.setState({ githubOrg: org.data[0].login });
         }
@@ -73,9 +89,9 @@ class SearchResult extends Component {
     axios
       .get(`${api.baseUrl}/users/${userName}/repos`)
       .then((repo) => {
-        console.log('repo', repo);
+        console.log("repo", repo);
         if (repo.data.length <= 0) {
-          this.setState({ githubRepo: '' });
+          this.setState({ githubRepo: "" });
         } else {
           this.setState({ githubRepo: repo.data });
         }
@@ -87,23 +103,30 @@ class SearchResult extends Component {
       });
   }
 
+
+
   render() {
     const {
-      githubData, githubOrg, githubRepo, loaded, error,
+      githubData,
+      githubOrg,
+      githubRepo,
+      loaded,
+      error,
+      pageNum
     } = this.state;
     const style = {
-      fontFamily: 'Raleway Regular',
+      fontFamily: "Raleway Regular",
       fontSize: 40,
-      color: '#ac53f2',
+      color: "#ac53f2",
       paddingTop: 118,
-      fontWeight: 'normal',
-      fontStyle: 'normal',
-      fontStretch: 'normal',
-      lineHeight: 'normal',
-      letterSpacing: 'normal',
+      fontWeight: "normal",
+      fontStyle: "normal",
+      fontStretch: "normal",
+      lineHeight: "normal",
+      letterSpacing: "normal"
     };
     return (
-      <div className="search-result">
+      <div className="search-result" onScroll={this.handleScroll}>
         <div className="row">
           {loaded === false ? <Loading /> : true}
           <div className="col-md-4">
@@ -140,7 +163,8 @@ class SearchResult extends Component {
                     if (a.stargazers_count > b.stargazers_count) return -1;
                     return 0;
                   })
-                  .map(name => (
+                  .slice(0, pageNum)
+                  .map((name) => (
                     <UserRepositories
                       key={name.id}
                       repoName={name.name}

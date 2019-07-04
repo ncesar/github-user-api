@@ -1,11 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBuilding as Building,
   faMapMarker as Map,
-  faStar as Star,
   faArchive as Repositories,
   faUsers as Followers,
   faUserPlus as Following,
@@ -25,7 +23,7 @@ const ProfileInfo = (props) => {
         <ul>
           <li>
             <FontAwesomeIcon icon={Building} className="icon" />{' '}
-            {props.organization != '' ? (
+            {props.organization !== '' ? (
               <span>{props.organization}</span>
             ) : (
               <span>Sem organização</span>
@@ -33,7 +31,7 @@ const ProfileInfo = (props) => {
           </li>
           <li>
             <FontAwesomeIcon icon={Map} className="icon" />{' '}
-            {props.location != '' ? (
+            {props.location !== '' ? (
               <span>{props.location}</span>
             ) : (
               <span>Sem localização</span>
@@ -65,8 +63,5 @@ const ProfileInfo = (props) => {
   );
 };
 
-ProfileInfo.propTypes = {
-  organization: PropTypes.string.isRequired
-};
 
 export default ProfileInfo;
