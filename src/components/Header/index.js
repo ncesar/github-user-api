@@ -17,7 +17,7 @@ const Header = ({ spacing, size }) => (
 
 Header.propTypes = {
   spacing: PropTypes.number.isRequired,
-  size: PropTypes.number.isRequired
+  size: PropTypes.number.isRequired,
 };
 
 export default Header;

@@ -40,9 +40,6 @@ const ProfileInfo = (props) => {
             )}
           </li>
           <li>
-            <FontAwesomeIcon icon={Star} className="icon" /> {props.stars}
-          </li>
-          <li>
             <FontAwesomeIcon icon={Repositories} className="icon" />{' '}
             {props.repoCount}
           </li>

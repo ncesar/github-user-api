@@ -14,7 +14,7 @@ const UserRepositories = props => (
       </li>
       <li>
         
-        {props.repoDescription != null ? <p className="repo-description">{props.repoDescription}</p> : <p className="repo-description">Sem descrição disponível</p>}
+        {props.repoDescription != null ? <p className="repo-description">{props.repoDescription.substring(0, 50)}...</p> : <p className="repo-description">Sem descrição disponível</p>}
       </li>
       <li>
         <span>

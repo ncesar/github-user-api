@@ -11,8 +11,7 @@ class SearchForm extends Component {
   constructor() {
     super();
     this.state = {
-      userName: '',
-      redirect: false
+      userName: ''
     };
   }
 
@@ -22,10 +21,6 @@ class SearchForm extends Component {
     });
   };
 
-  searchUser = () => {
-    this.setState({ redirect: true });
-  };
-
   render() {
     const { userName } = this.state;
     const { nameField } = this.props;
@@ -33,7 +28,7 @@ class SearchForm extends Component {
     return (
       <div className="search-form">
         <div className="row">
-          <div className="col-md-10 p-0">
+          <div className="col-md-12">
             <input
               type="text"
               name="userName"
@@ -43,8 +38,6 @@ class SearchForm extends Component {
               value={userName}
               required
             />
-          </div>
-          <div className="col-md-2 p-0">
             <Link
               className="btn-search"
               to={{

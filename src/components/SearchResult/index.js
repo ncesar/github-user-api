@@ -25,7 +25,7 @@ class SearchResult extends Component {
       githubOrg: [],
       githubRepo: [],
       loaded: false,
-      error: false
+      error: false,
     };
   }
 
@@ -88,7 +88,9 @@ class SearchResult extends Component {
   }
 
   render() {
-    const { githubData, githubOrg, githubRepo, loaded, error } = this.state;
+    const {
+      githubData, githubOrg, githubRepo, loaded, error,
+    } = this.state;
     const style = {
       fontFamily: 'Raleway Regular',
       fontSize: 40,
@@ -98,7 +100,7 @@ class SearchResult extends Component {
       fontStyle: 'normal',
       fontStretch: 'normal',
       lineHeight: 'normal',
-      letterSpacing: 'normal'
+      letterSpacing: 'normal',
     };
     return (
       <div className="search-result">
@@ -126,7 +128,6 @@ class SearchResult extends Component {
                   userName={githubData.login}
                   organization={githubOrg}
                   location={githubData.location}
-                  stars={2}
                   repoCount={githubData.public_repos}
                   followers={githubData.followers}
                   following={githubData.following}
@@ -135,11 +136,11 @@ class SearchResult extends Component {
               <div className="col-md-8">
                 {githubRepo
                   .sort((a, b) => {
-                    if (a.stargazers_count > b.stargazers_count) return 1;
-                    else if (a.stargazers_count < b.stargazers_count) return -1;
+                    if (a.stargazers_count < b.stargazers_count) return 1;
+                    if (a.stargazers_count > b.stargazers_count) return -1;
                     return 0;
                   })
-                  .map((name) => (
+                  .map(name => (
                     <UserRepositories
                       key={name.id}
                       repoName={name.name}
