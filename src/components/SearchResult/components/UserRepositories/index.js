@@ -8,6 +8,7 @@ import './sass/UserRepositories.scss';
 
 const UserRepositories = props => (
   <div className="user-repos">
+    <a href={props.repoUrl} target="_blank" rel="noopener noreferrer">
     <ul>
       <li>
         <h2 className="repo-name">{props.repoName}</h2>
@@ -23,6 +24,7 @@ const UserRepositories = props => (
         </span>
       </li>
     </ul>
+    </a>
   </div>
 );
 

@@ -167,6 +167,7 @@ class SearchResult extends Component {
                   .map((name) => (
                     <UserRepositories
                       key={name.id}
+                      repoUrl={name.html_url}
                       repoName={name.name}
                       repoDescription={name.description}
                       starNumber={name.stargazers_count}

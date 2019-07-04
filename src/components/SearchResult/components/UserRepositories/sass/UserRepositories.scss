@@ -8,16 +8,22 @@
     line-height: normal;
     letter-spacing: normal;
   }
+  a {
+    color: inherit;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   ul {
     li {
       list-style: none;
       .repo-name {
-        font-family: 'Raleway Regular';
+        font-family: "Raleway Regular";
         color: #ac53f2;
         font-size: 35px;
       }
       .repo-description {
-        font-family: 'Raleway Light';
+        font-family: "Raleway Light";
         color: #000000;
         font-size: 25.5px;
       }
