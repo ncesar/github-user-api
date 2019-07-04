@@ -1,0 +1,47 @@
+.profile-info {
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.4);
+  }
+  h2,
+  h3,
+  li {
+    font-family: 'Raleway Light';
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    font-weight: 300;
+    text-align: left;
+  }
+  .name {
+    font-size: 35px;
+    color: #000000;
+    margin-top: 12px;
+  }
+  .username {
+    font-size: 20px;
+    color: #5c5c5c;
+    margin-top: 7px;
+    margin-bottom: 28px;
+  }
+  .user-info {
+    ul {
+        padding: 0;
+      li {
+        color: #5c5c5c;
+        font-size: 20px;
+        margin-bottom: 14px;
+        list-style: none;
+      }
+    }
+
+    .icon {
+      margin-right: 5px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

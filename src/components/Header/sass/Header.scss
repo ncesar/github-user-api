@@ -1,7 +1,9 @@
 header{
     padding-top: 200px;
-    h1{
-        font-size: 60px;
+    a{
+        &:hover{
+            text-decoration: none;
+        }
     }
     .primary-title{
         font-family: 'Monaco';

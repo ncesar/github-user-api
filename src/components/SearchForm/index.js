@@ -1,7 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -24,13 +23,13 @@ class SearchForm extends Component {
   };
 
   searchUser = () => {
-      this.setState({ redirect: true });
-  }
-
-
+    this.setState({ redirect: true });
+  };
 
   render() {
     const { userName } = this.state;
+    const { nameField } = this.props;
+
     return (
       <div className="search-form">
         <div className="row">
@@ -39,27 +38,25 @@ class SearchForm extends Component {
               type="text"
               name="userName"
               className="input-field"
-              value={userName}
+              placeholder={nameField}
               onChange={this.onChangeHandler}
+              value={userName}
+              required
             />
           </div>
           <div className="col-md-2 p-0">
-            <button
-              type="button"
+            <Link
               className="btn-search"
-              onClick={this.searchUser}
+              to={{
+                pathname: `/search-results/${userName}`,
+                state: { userName: this.state.userName }
+              }}
             >
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-            {this.state.redirect ? (
-              <Redirect
-                to={{
-                  pathname: '/search-results',
-                  search: `?user=${userName}`,
-                  state: { userName: this.state.userName }
-                }}
+              <FontAwesomeIcon
+                icon={faSearch}
+                style={{ transform: 'rotate(90deg)' }}
               />
-            ) : null}
+            </Link>
           </div>
         </div>
       </div>

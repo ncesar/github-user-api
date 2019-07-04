@@ -1,0 +1,39 @@
+.user-repos {
+  text-align: left;
+  h2,
+  p {
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  ul {
+    li {
+      list-style: none;
+      .repo-name {
+        font-family: 'Raleway Regular';
+        color: #ac53f2;
+        font-size: 35px;
+      }
+      .repo-description {
+        font-family: 'Raleway Light';
+        color: #000000;
+        font-size: 25.5px;
+      }
+      .icon {
+        width: 25.5px;
+        height: 25.5px;
+        margin-right: 7.4px;
+      }
+      span {
+        .star-number {
+          font-family: Raleway;
+          font-size: 20px;
+          color: #5c5c5c;
+          margin-top: -7.4px;
+        }
+      }
+    }
+  }
+}

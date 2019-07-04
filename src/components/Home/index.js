@@ -6,7 +6,7 @@ import SearchForm from '../SearchForm';
 function Home() {
   return (
     <React.Fragment>
-      <Header />
+      <Header spacing={200} size={60} />
       <SearchForm />
     </React.Fragment>
   );

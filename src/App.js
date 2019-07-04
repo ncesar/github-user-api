@@ -14,7 +14,7 @@ function App() {
       <div className="container">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/search-results" component={SearchResults} />
+          <Route exact path="/search-results/:slug" component={SearchResults} />
         </Switch>
       </div>
     </BrowserRouter>
